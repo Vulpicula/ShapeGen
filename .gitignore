@@ -2,10 +2,9 @@
 export
 out
 
-#ide things
-.idea
+#ide/github things
+.git
 .vscode
 
 #misc
 dump
-unused
