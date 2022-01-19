@@ -18,7 +18,6 @@ class ShapeGenState extends FlxState
 
 	var chosenColour:Int = 0;
 	var hideUI = false;
-	var quickDraw = true;
 	var rainbowMode = false;
 
 	var canvasSprite = new FlxSprite();
@@ -52,7 +51,7 @@ class ShapeGenState extends FlxState
 
 		// On-screen information.
 		infoText = new FlxText(1, 1, 0,
-			"([ShapeGen Controls])\n > [C] to toggle colour. \n > [M] to toggle drawing mode.\n > [Q] to disable quick drawing. \n > [R] to toggle RAINBOWS (overwrites [C])." +
+			"([ShapeGen Controls])\n > [C] to toggle colour. \n > [M] to toggle drawing mode.\n > [R] to toggle RAINBOWS (overwrites [C])." +
 			"\n > [+] to increase sides. ([3] to add 3)\n > [-] to decrease sides (min 3). \n > [Shift] to increase radius by 15px (max 450).\n > [Ctrl] to decrease radius by 15px (min 15)." +
 			"\n > [ESC] to redraw with changes.\n > \n > [H] to hide this text.",
 			16); // Start a timer. Upon each conclusion it resets the timer and draws a line.
@@ -61,7 +60,7 @@ class ShapeGenState extends FlxState
 
 		// This is my attempt at emulating what Snap does in a simple way.
 		trace("Starting timer...");
-		new FlxTimer().start(1 / shapeSides, timerComplete, 0);
+		new FlxTimer().start(1.5 / shapeSides, timerComplete, 0);
 
 		super.create();
 	}
@@ -81,10 +80,8 @@ class ShapeGenState extends FlxState
 					chosenColour = 0;
 				}
 				setLineColour(chosenColour);
-				if (quickDraw == true)
-				{
-					resetCanvas();
-				}
+
+				resetCanvas();
 			}
 			if (FlxG.keys.anyJustPressed([H]))
 			{
@@ -108,22 +105,6 @@ class ShapeGenState extends FlxState
 				{
 					drawMode = 0;
 				}
-				if (quickDraw == true)
-				{
-					resetCanvas();
-				}
-			}
-			if (FlxG.keys.anyJustPressed([Q]))
-			{
-				trace("Toggling instantDraw.");
-				if (quickDraw == false)
-				{
-					quickDraw = true;
-				}
-				else
-				{
-					quickDraw = false;
-				}
 				resetCanvas();
 			}
 			if (FlxG.keys.anyJustPressed([R]))
@@ -138,26 +119,17 @@ class ShapeGenState extends FlxState
 					trace("RAINBOWS disabled :(.");
 					rainbowMode = false;
 				}
-				if (quickDraw == true)
-				{
-					resetCanvas();
-				}
+				resetCanvas();
 			}
 			if (FlxG.keys.anyJustPressed([PLUS]))
 			{
 				shapeSides++;
-				if (quickDraw == true)
-				{
-					resetCanvas();
-				}
+				resetCanvas();
 			}
 			if (FlxG.keys.anyJustPressed([THREE]))
 			{
 				shapeSides += 3;
-				if (quickDraw == true)
-				{
-					resetCanvas();
-				}
+				resetCanvas();
 			}
 			if (FlxG.keys.anyJustPressed([MINUS]))
 			{
@@ -165,10 +137,7 @@ class ShapeGenState extends FlxState
 				{
 					shapeSides--;
 				}
-				if (quickDraw == true)
-				{
-					resetCanvas();
-				}
+				resetCanvas();
 			}
 			if (FlxG.keys.anyJustPressed([SHIFT]))
 			{
@@ -176,10 +145,7 @@ class ShapeGenState extends FlxState
 				{
 					shapeRadius += 15;
 				}
-				if (quickDraw == true)
-				{
-					resetCanvas();
-				}
+				resetCanvas();
 			}
 			if (FlxG.keys.anyJustPressed([CONTROL]))
 			{
@@ -187,10 +153,7 @@ class ShapeGenState extends FlxState
 				{
 					shapeRadius -= 15;
 				}
-				if (quickDraw == true)
-				{
-					resetCanvas();
-				}
+				resetCanvas();
 			}
 			if (FlxG.keys.anyJustPressed([ESCAPE]))
 			{
@@ -282,14 +245,7 @@ class ShapeGenState extends FlxState
 		drawIterations = 0;
 
 		// Start the timer again.
-		if (quickDraw == false)
-		{
-			new FlxTimer().start(1 / shapeSides, timerComplete, 0);
-		}
-		else
-		{
-			new FlxTimer().start(0.1 / shapeSides, timerComplete, 0);
-		}
+		new FlxTimer().start(0.2 / shapeSides * 2, timerComplete, 0);
 	}
 
 	function setLineColour(colour:Int)
