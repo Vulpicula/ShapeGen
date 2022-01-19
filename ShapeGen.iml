@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="HAXE_MODULE" version="4">
+  <component name="HaxeModuleSettingsStorage">
+    <option name="buildConfig" value="3" />
+    <option name="openFLPath" value="$MODULE_DIR$/Project.xml" />
+    <option name="openFLTarget" value="Linux 64" />
+    <option name="outputFolder" value="$MODULE_DIR$/out/production/SESI_Exchange" />
+  </component>
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/source" isTestSource="false" />
+    </content>
+    <orderEntry type="jdk" jdkName="Haxe 4.1.5" jdkType="Haxe toolkit" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="flixel" level="project" />
+    <orderEntry type="library" name="flixel-addons" level="project" />
+    <orderEntry type="library" name="openfl" level="project" />
+    <orderEntry type="library" name="lime" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="module-library" scope="PROVIDED">
+      <library name="haxelib|flixel-ui:any">
+        <CLASSES>
+          <root url="file://$USER_HOME$/haxelib/flixel-ui/2,3,3" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$USER_HOME$/haxelib/flixel-ui/2,3,3" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="flixel-addons" level="project" />
+    <orderEntry type="module-library" scope="PROVIDED">
+      <library name="haxelib|openfl:any">
+        <CLASSES>
+          <root url="file://$USER_HOME$/haxelib/openfl/9,1,0/src" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$USER_HOME$/haxelib/openfl/9,1,0/src" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="PROVIDED">
+      <library name="haxelib|flixel:any">
+        <CLASSES>
+          <root url="file://$USER_HOME$/haxelib/flixel/4,9,0" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$USER_HOME$/haxelib/flixel/4,9,0" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="PROVIDED">
+      <library name="haxelib|flixel-addons:any">
+        <CLASSES>
+          <root url="file://$USER_HOME$/haxelib/flixel-addons/2,10,0" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$USER_HOME$/haxelib/flixel-addons/2,10,0" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+  </component>
+</module>
