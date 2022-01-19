@@ -7,6 +7,7 @@ import flixel.math.FlxPoint;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
+import haxe.display.Display.Package;
 
 using flixel.util.FlxSpriteUtil;
 
@@ -17,7 +18,7 @@ class ShapeGenState extends FlxState
 
 	var chosenColour:Int = 0;
 	var hideUI = false;
-	var quickDraw = false;
+	var quickDraw = true;
 	var rainbowMode = false;
 
 	var canvasSprite = new FlxSprite();
@@ -51,8 +52,8 @@ class ShapeGenState extends FlxState
 
 		// On-screen information.
 		infoText = new FlxText(1, 1, 0,
-			"([ShapeGen Controls])\n > [C] to toggle colour. \n > [M] to toggle drawing mode.\n > [Q] to enable quick drawing. \n > [R] to toggle RAINBOWS (overwrites [C])." +
-			"\n > [+] to increase sides.\n > [-] to decrease sides (min 3). \n > [Shift] to increase radius by 15px (max 450).\n > [Ctrl] to decrease radius by 15px (min 15)." +
+			"([ShapeGen Controls])\n > [C] to toggle colour. \n > [M] to toggle drawing mode.\n > [Q] to disable quick drawing. \n > [R] to toggle RAINBOWS (overwrites [C])." +
+			"\n > [+] to increase sides. ([3] to add 3)\n > [-] to decrease sides (min 3). \n > [Shift] to increase radius by 15px (max 450).\n > [Ctrl] to decrease radius by 15px (min 15)." +
 			"\n > [ESC] to redraw with changes.\n > \n > [H] to hide this text.",
 			16); // Start a timer. Upon each conclusion it resets the timer and draws a line.
 		infoText.color = FlxColor.GRAY;
@@ -103,7 +104,7 @@ class ShapeGenState extends FlxState
 			{
 				trace("Toggling drawMode.");
 				drawMode++;
-				if (drawMode > 3)
+				if (drawMode > 2)
 				{
 					drawMode = 0;
 				}
@@ -145,6 +146,14 @@ class ShapeGenState extends FlxState
 			if (FlxG.keys.anyJustPressed([PLUS]))
 			{
 				shapeSides++;
+				if (quickDraw == true)
+				{
+					resetCanvas();
+				}
+			}
+			if (FlxG.keys.anyJustPressed([THREE]))
+			{
+				shapeSides += 3;
 				if (quickDraw == true)
 				{
 					resetCanvas();
@@ -199,9 +208,7 @@ class ShapeGenState extends FlxState
 		drawIterations++;
 		trace("Iteration: " + drawIterations + "/" + shapeSides);
 
-		if (shapePointA.x >= shapeCenterCoordinate.x
-			&& shapePointA.y >= shapeCenterCoordinate.y - shapeRadius
-			&& drawIterations >= shapeSides) // Requires three passed checks, otherwise it ends early for some reason.
+		if (drawIterations >= shapeSides)
 		{
 			isDrawing = false;
 			timer.destroy();
@@ -221,7 +228,14 @@ class ShapeGenState extends FlxState
 			}
 			setLineColour(chosenColour);
 		}
-		canvasSprite.drawLine(shapePointA.x, shapePointA.y, shapePointB.x, shapePointB.y, lineStyle);
+		if (drawIterations < shapeSides - 1 || drawMode == 1)
+		{
+			canvasSprite.drawLine(shapePointA.x, shapePointA.y, shapePointB.x, shapePointB.y, lineStyle);
+		}
+		else
+		{
+			canvasSprite.drawLine(shapePointA.x, shapePointA.y, shapeCenterCoordinate.x, shapeCenterCoordinate.y - shapeRadius, lineStyle);
+		}
 		// Rotate both points by the shapeAngle.
 		if (drawMode != 2)
 		{
@@ -243,10 +257,13 @@ class ShapeGenState extends FlxState
 		// Remake sprite.
 		canvasSprite = new FlxSprite();
 		canvasSprite.makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK, true);
-		add(canvasSprite);
+		insert(0, canvasSprite);
 		// Removes text, re-adds it at the top of the stack.
 		remove(infoText);
-		insert(100, infoText);
+		if (hideUI == false)
+		{
+			insert(1000, infoText);
+		}
 
 		// Resets shapePoint location back to the initial bit.
 		shapePointA.set(shapeCenterCoordinate.x, shapeCenterCoordinate.y - shapeRadius);
@@ -257,7 +274,7 @@ class ShapeGenState extends FlxState
 		}
 		else
 		{
-			shapePointB.set(shapeCenterCoordinate.x + shapeRadius);
+			shapePointB.set(shapePointA.x + shapeRadius, shapePointA.y);
 		}
 		isDrawing = true;
 
@@ -271,7 +288,7 @@ class ShapeGenState extends FlxState
 		}
 		else
 		{
-			new FlxTimer().start(0.25 / shapeSides, timerComplete, 0);
+			new FlxTimer().start(0.1 / shapeSides, timerComplete, 0);
 		}
 	}
 
