@@ -15,11 +15,13 @@ class ShapeGenState extends FlxState
 {
 	// UI related.
 	var isDrawing:Bool = true;
-
-	var chosenColour:Int = 0;
 	var hideUI = false;
+
+	// Colour options
+	var chosenColour:Int = 0;
 	var rainbowMode = false;
 
+	// Canvas/Drawing
 	var canvasSprite = new FlxSprite();
 	var lineStyle:LineStyle;
 
@@ -34,11 +36,13 @@ class ShapeGenState extends FlxState
 
 	var drawMode:Int = 0;
 
+	// Informational text that appears in the upper left.
 	var infoText:FlxText;
 
 	override public function create()
 	{
-		canvasSprite.makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK, true); // Creates a background sprite for us to draw on.
+		canvasSprite.makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK,
+			true); // Creates a background sprite for us to draw on. "FlxG.width/height" is essentially pegged to the size of the screen.
 		add(canvasSprite); // Draws it.
 
 		lineStyle = {color: FlxColor.WHITE, thickness: 1};
@@ -58,7 +62,7 @@ class ShapeGenState extends FlxState
 		infoText.color = FlxColor.GRAY;
 		add(infoText);
 
-		// This is my attempt at emulating what Snap does in a simple way.
+		// This is my attempt at emulating what Snap does in a simple way. I could probably use a for loop to make it draw instantly, but that's boring.
 		trace("Starting timer...");
 		new FlxTimer().start(1.5 / shapeSides, timerComplete, 0);
 
@@ -67,7 +71,21 @@ class ShapeGenState extends FlxState
 
 	override public function update(elapsed:Float)
 	{
-		if (isDrawing == false)
+		if (FlxG.keys.anyJustPressed([H]))
+		{
+			trace("Toggling UI.");
+			if (hideUI == false)
+			{
+				remove(infoText);
+				hideUI = true;
+			}
+			else
+			{
+				add(infoText);
+				hideUI = false;
+			}
+		}
+		if (isDrawing == false) // Don't take certain inputs if it's still drawing.
 		{
 			if (FlxG.keys.anyJustPressed([C]))
 			{
@@ -83,21 +101,7 @@ class ShapeGenState extends FlxState
 
 				resetCanvas();
 			}
-			if (FlxG.keys.anyJustPressed([H]))
-			{
-				trace("Toggling UI.");
-				if (hideUI == false)
-				{
-					remove(infoText);
-					hideUI = true;
-				}
-				else
-				{
-					add(infoText);
-					hideUI = false;
-				}
-			}
-			if (FlxG.keys.anyJustPressed([M]))
+			else if (FlxG.keys.anyJustPressed([M]))
 			{
 				trace("Toggling drawMode.");
 				drawMode++;
@@ -107,7 +111,7 @@ class ShapeGenState extends FlxState
 				}
 				resetCanvas();
 			}
-			if (FlxG.keys.anyJustPressed([R]))
+			else if (FlxG.keys.anyJustPressed([R]))
 			{
 				if (rainbowMode == false)
 				{
@@ -121,17 +125,17 @@ class ShapeGenState extends FlxState
 				}
 				resetCanvas();
 			}
-			if (FlxG.keys.anyJustPressed([PLUS]))
+			else if (FlxG.keys.anyJustPressed([PLUS]))
 			{
 				shapeSides++;
 				resetCanvas();
 			}
-			if (FlxG.keys.anyJustPressed([THREE]))
+			else if (FlxG.keys.anyJustPressed([THREE]))
 			{
 				shapeSides += 3;
 				resetCanvas();
 			}
-			if (FlxG.keys.anyJustPressed([MINUS]))
+			else if (FlxG.keys.anyJustPressed([MINUS]))
 			{
 				if (shapeSides > 3)
 				{
@@ -139,7 +143,7 @@ class ShapeGenState extends FlxState
 				}
 				resetCanvas();
 			}
-			if (FlxG.keys.anyJustPressed([SHIFT]))
+			else if (FlxG.keys.anyJustPressed([SHIFT]))
 			{
 				if (shapeRadius <= 450)
 				{
@@ -147,7 +151,7 @@ class ShapeGenState extends FlxState
 				}
 				resetCanvas();
 			}
-			if (FlxG.keys.anyJustPressed([CONTROL]))
+			else if (FlxG.keys.anyJustPressed([CONTROL]))
 			{
 				if (shapeRadius >= 15)
 				{
@@ -155,7 +159,7 @@ class ShapeGenState extends FlxState
 				}
 				resetCanvas();
 			}
-			if (FlxG.keys.anyJustPressed([ESCAPE]))
+			else if (FlxG.keys.anyJustPressed([ESCAPE]))
 			{
 				resetCanvas();
 			}
@@ -171,6 +175,7 @@ class ShapeGenState extends FlxState
 		drawIterations++;
 		trace("Iteration: " + drawIterations + "/" + shapeSides);
 
+		// Count drawIterations to figure out if the timer needs to be killed.
 		if (drawIterations >= shapeSides)
 		{
 			isDrawing = false;
@@ -182,6 +187,8 @@ class ShapeGenState extends FlxState
 	{
 		trace("shapePointA = " + shapePointA);
 		trace("shapePointB = " + shapePointB);
+
+		// If rainbowMode is on, change colour each time a new line is drawn.
 		if (rainbowMode == true)
 		{
 			chosenColour++;
@@ -191,7 +198,7 @@ class ShapeGenState extends FlxState
 			}
 			setLineColour(chosenColour);
 		}
-		if (drawIterations < shapeSides - 1 || drawMode == 1)
+		if (drawIterations < shapeSides - 1 || drawMode == 1) // Dirty fix to prevent a strange "gap" appearing due to imperfect math. drawMode 1 requires me to disable this.
 		{
 			canvasSprite.drawLine(shapePointA.x, shapePointA.y, shapePointB.x, shapePointB.y, lineStyle);
 		}
@@ -199,7 +206,7 @@ class ShapeGenState extends FlxState
 		{
 			canvasSprite.drawLine(shapePointA.x, shapePointA.y, shapeCenterCoordinate.x, shapeCenterCoordinate.y - shapeRadius, lineStyle);
 		}
-		// Rotate both points by the shapeAngle.
+		// Rotate both points.
 		if (drawMode != 2)
 		{
 			shapePointA.rotate(shapeCenterCoordinate, 360 / shapeSides);
@@ -213,6 +220,7 @@ class ShapeGenState extends FlxState
 
 	function resetCanvas()
 	{
+		trace("Resetting Canvas...");
 		if (canvasSprite != null)
 		{
 			canvasSprite.destroy(); // Don't destroy this if it doesn't actually exist.
@@ -239,10 +247,10 @@ class ShapeGenState extends FlxState
 		{
 			shapePointB.set(shapePointA.x + shapeRadius, shapePointA.y);
 		}
-		isDrawing = true;
 
-		// Reset variables.
+		// Reset variable(s).
 		drawIterations = 0;
+		isDrawing = true;
 
 		// Start the timer again.
 		new FlxTimer().start(0.2 / shapeSides * 2, timerComplete, 0);
