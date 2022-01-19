@@ -11,6 +11,8 @@ using flixel.util.FlxSpriteUtil;
 
 class ShapeGenState extends FlxState
 {
+	var isDrawing:Bool = true;
+
 	var canvasSprite = new FlxSprite();
 	var lineStyle:LineStyle;
 
@@ -18,12 +20,12 @@ class ShapeGenState extends FlxState
 	var shapePointA:FlxPoint;
 	var shapePointB:FlxPoint;
 
-	var shapePointAX:Float;
-	var shapePointAY:Float;
-	var shapePointBX:Float;
-	var shapePointBY:Float;
-	var shapeRadius:Int = 100;
-	var shapeSides:Int = 4;
+	var shapeRadius:Int = 300;
+	var shapeSides:Int = 200;
+
+	var drawIterations:Int = 0;
+
+	var drawMode:Int = 2;
 
 	override public function create()
 	{
@@ -32,14 +34,16 @@ class ShapeGenState extends FlxState
 
 		lineStyle = {color: FlxColor.WHITE, thickness: 1};
 
-		trace("Setting shapePoint thingymajiggers...");
-		shapeCenterCoordinate.set(FlxG.width / 2, FlxG.height / 2);
-		shapePointA.set(shapeCenterCoordinate.x, shapeCenterCoordinate.y - shapeRadius);
-		shapePointB.set(shapeCenterCoordinate.x + shapeRadius, shapeCenterCoordinate.y);
+		trace("Setting shapePoints...");
+		shapeCenterCoordinate = new FlxPoint(FlxG.width / 2, FlxG.height / 2);
+		shapePointA = new FlxPoint(shapeCenterCoordinate.x, shapeCenterCoordinate.y - shapeRadius); // Defines position of both.
+		shapePointB = new FlxPoint(shapePointA.x, shapePointA.y);
+		shapePointB.rotate(shapeCenterCoordinate, 360 / shapeSides); // Rotates B.
 
 		// Start a timer. Upon each conclusion it resets the timer and draws a line.
 		// This is my attempt at emulating what Snap does in a simple way.
-		new FlxTimer().start(0.1, timerComplete, shapeSides);
+		trace("Starting timer...");
+		new FlxTimer().start(2 / shapeSides, timerComplete, 0);
 
 		super.create();
 	}
@@ -53,14 +57,32 @@ class ShapeGenState extends FlxState
 	{
 		trace("Calling drawNextLine()");
 		drawNextLine();
+
+		drawIterations++;
+		trace("Iteration: " + drawIterations + "/" + shapeSides);
+
+		if (shapePointA.x >= 720 && shapePointA.y >= 150 && drawIterations >= shapeSides) // Requires two passed checks, otherwise it ends early for some reason.
+		{
+			isDrawing = false;
+			timer.destroy();
+		}
 	}
 
 	function drawNextLine()
 	{
-		canvasSprite.drawLine(shapePointAX, shapePointAY, shapePointBX, shapePointBY);
-		// A -> B now drawn, set A to B, find new B.
-		shapePointAX = shapePointBX;
-		shapePointAY = shapePointBY;
+		trace("shapePointA = " + shapePointA);
+		trace("shapePointB = " + shapePointB);
+		canvasSprite.drawLine(shapePointA.x, shapePointA.y, shapePointB.x, shapePointB.y);
+		// Rotate both points by the shapeAngle.
+		if (drawMode != 2)
+		{
+			shapePointA.rotate(shapeCenterCoordinate, 360 / shapeSides);
+			shapePointB.rotate(shapeCenterCoordinate, 360 / shapeSides);
+		}
+		else
+		{
+			shapePointB.rotate(shapeCenterCoordinate, 360 / shapeSides);
+		}
 	}
 
 	function resetCanvas()
@@ -72,5 +94,17 @@ class ShapeGenState extends FlxState
 		// Remake sprite.
 		canvasSprite.makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK, true);
 		add(canvasSprite);
+
+		// Resets shapePoint location back to the initial bit.
+		shapePointA.set(shapeCenterCoordinate.x, shapeCenterCoordinate.y - shapeRadius);
+		if (drawMode != 1)
+		{
+			shapePointB.set(shapePointA.x, shapePointA.y);
+		}
+		else
+		{
+			shapePointB.set(shapeCenterCoordinate.x + shapeRadius);
+		}
+		isDrawing = true;
 	}
 }
